@@ -1,7 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-from pathlib import Path
-import pickle
 import time
 import requests_cache
 
@@ -58,6 +56,8 @@ def gen_data():
     return contents, html
 
 
+# from pathlib import Path
+# import pickle
 # pkl_path = Path("cache/data.pkl")
 # if pkl_path.exists():
 #     with open(pkl_path, "rb") as f:
@@ -67,10 +67,7 @@ def gen_data():
 #     with open(pkl_path, "wb") as f:
 #         pickle.dump(data, f)
 
-print("こんにちは")
 data, html = gen_data()
 with open("index.html", "w") as f:
     f.write(html)
 print("time: ", time.time() - start)
-
-# print(data)
