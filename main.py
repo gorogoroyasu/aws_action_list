@@ -5,6 +5,8 @@ import pickle
 import time
 import requests_cache
 
+from datetime import datetime
+
 requests_cache.install_cache('cache/aws_document_cache')
 start = time.time()
 
@@ -17,7 +19,7 @@ def to_soup(url):
 
 def gen_data():
     soup = to_soup(target_url)
-    html = ""
+    html = f"<h1>{datetime.now()}</h1>"
     links = []
     for li in soup.find_all('li'):
         a_tag = li.find("a")
@@ -67,7 +69,7 @@ def gen_data():
 
 print("こんにちは")
 data, html = gen_data()
-with open("all_services.html", "w") as f:
+with open("index.html", "w") as f:
     f.write(html)
 print("time: ", time.time() - start)
 
